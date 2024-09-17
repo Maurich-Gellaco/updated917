@@ -1,0 +1,206 @@
+body {
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #fbf0f0;
+    color: #fff;
+    overflow-x: hidden;
+    background: linear-gradient(rgba(244, 244, 244, 0), rgba(0, 0, 0, 0)), url('bg.gif') no-repeat center center/cover;
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: #3333336f;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.logo {
+    font-size: 30px;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
+    color: #fff;
+    margin-left: 6px;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.home-button,
+.new-button,
+.top-button {
+    font-size: 15px;
+    font-family: "Raleway", sans-serif;
+    cursor: pointer;
+    color: #c3baba;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none; 
+    position: relative;
+    overflow: hidden; /* Ensures the pseudo-elements stay within button bounds */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.home-button::before,
+.new-button::before,
+.top-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #393838, #a0a0a0);
+    transition: transform 0.5s ease;
+    transform: translateX(-50%) scaleX(0);
+    z-index: -1; /* Places the gradient behind the text */
+}
+
+.home-button:hover::before,
+.new-button:hover::before,
+.top-button:hover::before {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.home-button:hover::after,
+.new-button:hover::after,
+.top-button:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #534f4f;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    background-color: #534f4fa0; /* Change color on hover */
+    height: 3px; /* Slightly increase height on hover */
+}
+
+.home-button:hover,
+.new-button:hover,
+.top-button:hover {
+    color: #252424; /* Change text color on hover */
+
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    margin-left: 74vw; 
+}
+
+.icon {
+    font-size: 24px;
+    color: #c3baba;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.icon img {
+    width: 23px;
+    height: 23px;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+main {
+    padding: 20px;
+    margin-top: 80px;
+}
+
+.container {
+    position: relative;
+    margin: 100px auto 0; 
+    width: 50%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.container img {
+    width: 15%; 
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid rgb(169, 161, 161);
+    transition: all ease-in-out 0.5s;
+}
+
+.container .title {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-family: "Raleway", sans-serif;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease, top 0.3s ease;
+    text-align: center;
+    pointer-events: none; 
+}
+
+
+.container img:hover + .title {
+    opacity: 1;
+    top: -60px;
+}
+
+
+.container img:hover {
+    width: 25%;
+}
+
+/* Splash object animation */
+.passing-object {
+    width: 1000px; 
+    height: 1000px;
+    background: linear-gradient(45deg, #561100, #feb47b); /* Gradient color */
+    position: absolute;
+    top: 50%;
+    left: -200px; 
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    transform: translateY(-50%);
+    animation: splashEffect 2s ease-in-out forwards;
+    opacity: 1; /* Start fully visible */
+}
+
+/* Animation for fast splash effect */
+@keyframes splashEffect {
+    0% {
+        left: -200px;
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+        background: linear-gradient(45deg, #8f5a4d, #550e14); 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        left: 50%;
+        transform: translateY(-50%) scale(1.2);
+        background: linear-gradient(45deg, #451418, #c50b0e); 
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    }
+    100% {
+        left: 100%;
+        transform: translateY(-50%) scale(0.8);
+        background: linear-gradient(45deg, #000000, #5a1216);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+        opacity: 0;
+    }
+}
